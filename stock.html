@@ -13,8 +13,18 @@ function getPrice(symbol){
  	    console.log(data.query.results.quote);
 
 	    $("tr[data-stock='"+symbol+"'] .name").html(price.symbol);
+
+      if ( parseInt(price.Change) < 0 ) {
+        color = "red";
+      } else if ( parseInt(price.Change) > 0 ) {
+        color = "green";
+      } else {
+        color = ""
+      }
+
+
 	    $("tr[data-stock='"+symbol+"'] .price").html(price.LastTradePriceOnly);
-	    $("tr[data-stock='"+symbol+"'] .change").html(price.PercentChange);
+	    $("tr[data-stock='"+symbol+"'] .change").html(price.PercentChange).addClass(color);
   });
 
 
