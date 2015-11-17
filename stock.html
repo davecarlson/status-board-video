@@ -27,7 +27,7 @@ function getPrice(symbol){
       }
 
 
-	    $("tr[data-stock='"+symbol+"'] .price").html(price.LastTradePriceOnly);
+	    $("tr[data-stock='"+symbol+"'] .price").html(parseFloat(price.LastTradePriceOnly).toFixed(2));
 	    $("tr[data-stock='"+symbol+"'] .change").html(price.PercentChange).removeClass("red").removeClass("green").addClass(color);
   });
 
