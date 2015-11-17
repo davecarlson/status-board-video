@@ -13,10 +13,10 @@ function getPrice(symbol){
  	    console.log(data.query.results.quote);
 
 	    $("tr[data-stock='"+symbol+"'] .name").html(price.symbol);
-
-      if ( parseInt(price.Change) < 0 ) {
+      console.log(parseFloat(price.Change))
+      if ( parseFloat(price.Change) < 0 ) {
         color = "red";
-      } else if ( parseInt(price.Change) > 0 ) {
+      } else if ( parseFloat(price.Change) > 0 ) {
         color = "green";
       } else {
         color = ""
@@ -24,7 +24,7 @@ function getPrice(symbol){
 
 
 	    $("tr[data-stock='"+symbol+"'] .price").html(price.LastTradePriceOnly);
-	    $("tr[data-stock='"+symbol+"'] .change").html(price.PercentChange).addClass(color);
+	    $("tr[data-stock='"+symbol+"'] .change").html(price.PercentChange).removeClass("red").removeClass("green").addClass(color);
   });
 
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
 		<td class="price"></td>
 		<td class="change"></td>
 	</tr>
-  <tr id="sln">
+  <tr data-stock="SLN.L" id="sln">
 		<td class="name"></td>
 		<td class="price"></td>
 		<td class="change"></td>
